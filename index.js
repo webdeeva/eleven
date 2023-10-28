@@ -19,8 +19,8 @@ app.post('/api/upload', async (req, res) => {
         const response = await axios.get(fileUrl, { responseType: 'arraybuffer' });
         const buffer = Buffer.from(response.data, 'binary');
         formData.append('files', buffer, {
-            contentType: 'audio/mpeg',
-            filename: 'sample.mp3' // Modify filename as per requirement
+            contentType: 'audio/webm',
+            filename: 'sample.webm' // Modify filename as per requirement
         });
     }
 

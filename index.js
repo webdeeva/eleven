@@ -7,7 +7,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(bodyParser.json());
-
+app.timeout = 600000;  // 10 minutes
 app.post('/api/upload', async (req, res) => {
     const { name, files, description, labels, apiKey } = req.body;
 

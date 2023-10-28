@@ -33,7 +33,8 @@ app.post('/api/upload', async (req, res) => {
                 'accept': 'application/json',
                 'xi-api-key': apiKey,
                 ...formData.getHeaders()
-            }
+            },
+            timeout: 600000  // Setting the timeout to 10 minutes
         });
         res.json(response.data);
     } catch (error) {

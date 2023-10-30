@@ -9,19 +9,18 @@ const PORT = 3000;
 app.use(bodyParser.json());
 
 app.post('/api/upload', async (req, res) => {
-   const { name, file, description, labels, apiKey, ElementId } = req.body;
+    const { name, file, description, labels, apiKey, ElementId } = req.body;
 
-const formData = new FormData();
-formData.append('name', name);
+    const formData = new FormData();
+    formData.append('name', name);
     
-// Download the file from the provided URL and append it to formData
-const response = await axios.get(file, { responseType: 'arraybuffer' });
-const buffer = Buffer.from(response.data, 'binary');
-formData.append('files', buffer, {
-    contentType: 'audio/mpeg',
-    filename: 'sample.mp3'
-});
-    }
+    // Download the file from the provided URL and append it to formData
+    const response = await axios.get(file, { responseType: 'arraybuffer' });
+    const buffer = Buffer.from(response.data, 'binary');
+    formData.append('files', buffer, {
+        contentType: 'audio/mpeg',
+        filename: 'sample.mp3'
+    });
 
     formData.append('description', description);
     formData.append('labels', JSON.stringify(labels));
